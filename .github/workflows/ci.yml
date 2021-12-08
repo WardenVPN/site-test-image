@@ -53,6 +53,7 @@ jobs:
         id: release-tag
         run: |
           printf '::set-output name=tag::%s' "$(printf '%s' "${{ github.ref }}" | sed 's/refs\/tags\///')"
+          echo ${{ steps.commit-tag.outputs.tag }}
 
       - name: Build and Push Tagged Release
         if: startsWith(github.ref, 'refs/tags/v')
