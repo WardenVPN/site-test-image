@@ -13,7 +13,6 @@ jobs:
   release:
     name: release
     runs-on: "ubuntu-20.04"
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Check out source code
         uses: actions/checkout@v1
@@ -31,6 +30,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set Commit Tag
+        if: github.ref == 'refs/heads/main'
         id: commit-tag
         run: |
           GIT_SHA=$(git rev-parse --short HEAD)
