@@ -14,12 +14,12 @@ FROM php:7.4.24-apache-bullseye
 
 RUN apt-get update >> /dev/null && \
     apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng-dev \
-        libsqlite3-dev \
-        libcurl4-gnutls-dev && \
+        libfreetype6-dev=2.10.4+dfsg-1 \
+        libjpeg62-turbo-dev=1:2.0.6-4 \
+        libmcrypt-dev=2.5.8-3.4+b1 \
+        libpng-dev=1.6.37-3 \
+        libsqlite3-dev=3.34.1-3 \
+        libcurl4-gnutls-dev=7.74.0-1.3+b1 && \
         apt-get autoremove -y && \
         rm -rf /var/lib/apt/lists/*
 
