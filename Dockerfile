@@ -2,7 +2,7 @@
 FROM php:7.4.24-apache-bullseye as stage
 WORKDIR /tmp
 RUN apt-get update >> /dev/null
-RUN apt-get install -y curl >> /dev/null
+RUN apt-get install -y curl=7.74.0-1.3+b1 >> /dev/null
 RUN curl -s -o ioncube.tar.gz https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz >> /dev/null
 RUN tar -xf ioncube.tar.gz
 RUN chown -R root:root /tmp/ioncube
