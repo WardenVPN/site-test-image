@@ -37,14 +37,15 @@ end
     'php -m',
     'php -m | grep ionCube24',
     'php -m | grep iconv',
+    'php -m | grep mysqli',
+    'php -m | grep pdo',
     'php -m | grep pdo_mysql',
     'php -m | grep pdo_sqlite',
     'php -m | grep gd',
     'php -m | grep pcntl',
     'php -m | grep curl',
     'php -m | grep bcmath',
-    'php -m | grep \'Zend OPcache\'', # opcache
-    'php -m | grep mysqli',
+    'php -m | grep \'Zend OPcache\'' # opcache
 ]. each do |cmd|
     describe command(cmd) do
         its('exit_status') { should eq 0 }

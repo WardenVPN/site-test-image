@@ -23,8 +23,8 @@ RUN apt-get update >> /dev/null && \
         apt-get autoremove -y && \
         rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install iconv mysqli pdo_mysql pdo_sqlite gd pcntl curl bcmath opcache
-RUN docker-php-ext-enable iconv mysqli pdo_mysql pdo_sqlite gd pcntl curl bcmath opcache
+RUN docker-php-ext-install iconv mysqli pdo pdo_mysql pdo_sqlite gd pcntl curl bcmath opcache
+RUN docker-php-ext-enable iconv mysqli pdo pdo_mysql pdo_sqlite gd pcntl curl bcmath opcache
 
 COPY --from=stage /tmp/composer-setup.php /tmp/composer-setup.php
 RUN php /tmp/composer-setup.php \
