@@ -10,9 +10,33 @@ on:
     - '*'
 
 jobs:
+  test:
+    name: test
+    runs-on: "ubuntu-20.04" 
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v1
+
+      - name: Build and Run Image
+        run:
+          docker build . -t base:latest
+          docker run -d \
+            --name base \
+            --entrypoint=/bin/sleep \
+            base:latest 3600
+
+      - name: Install Cinc
+        run: |
+          curl -L https://omnitruck.cinc.sh/install.sh | \
+          sudo bash -s -- -P cinc-auditor -v 4
+ 
+      - name: Run Inspec
+        run: cinc-auditor exec test/integration.rb -t docker://base
+
   release:
     name: release
     runs-on: "ubuntu-20.04"
+    needs: ["test"]
     steps:
       - name: Check out source code
         uses: actions/checkout@v1
