@@ -1,0 +1,1 @@
+[![ci](https://github.com/WardenVPN/site-test-image/actions/workflows/ci.yml/badge.svg)](https://github.com/WardenVPN/site-test-image/actions/workflows/ci.yml)
